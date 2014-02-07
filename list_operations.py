@@ -112,12 +112,14 @@ def custom_insert(input_list, index, value):
     """custom_insert(input_list, index, value) imitates
     input_list.insert(index, value)
     """
-
     input_list[index:index] = [value]
 
 def custom_remove(input_list, value):
     """custom_remove(input_list, value) imitates input_list.remove(value)"""
-    pass
+    for x in input_list:
+        if input_list[x] == value:
+            x = []
+            break
 
 def custom_pop(input_list):
     """custom_pop(input_list) imitates input_list.pop()"""
