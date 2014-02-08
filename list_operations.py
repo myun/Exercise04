@@ -94,10 +94,10 @@ the test_list_operations.py file for concrete examples of expected behavior.
 
 def custom_len(input_list):
     """custom_len(input_list) imitates len(input_list)""" 
-    custom_len = 0
+    list_len = 0
     for x in input_list:
-        custom_len += 1
-    return custom_len
+        list_len += 1
+    return list_len
 
 # For the next four functions, get clever using slice operations described in the first half
 def custom_append(input_list, value):
@@ -132,7 +132,6 @@ def custom_index(input_list, value):
     for i in range(custom_len(input_list)):
         if input_list[i] == value:
             return i 
-            break
 
 def custom_count(input_list, value):
     """custom_count(input_list, value) imitates input_list.count(value)"""
@@ -144,8 +143,22 @@ def custom_count(input_list, value):
 
 def custom_reverse(input_list):
     """custom_reverse(input_list) imitates input_list.reverse()"""
-    reverse_input_list = input_list[::-1]
-    input_list[:] = reverse_input_list [:]
+    #reverse_input_list = input_list[::-1]
+    #input_list[:] = reverse_input_list [:]
+    x = 0
+    y = custom_len(input_list) -1
+    for index in range ((custom_len(input_list))/2):
+        t = input_list[x]
+        input_list[x] = input_list[y]
+        input_list[y] = t
+        x += 1
+        y -= 1
+    return
+
+    #for index in range ((custom_len(input_list))/2):
+     #   t = input_list[index]
+      #  input_list[index] = input_list[custom_len(input_list)-1 - index]
+       # input_list[custom_len(input_list - 1 - index)] = t
 
 def custom_contains(input_list, value):
     """custom_contains(input_list, value) imitates (value in input_list)"""
@@ -158,9 +171,17 @@ def custom_equality(some_list, another_list):
     """custom_equality(some_list, another_list) imitates
     (some_list == another_list)
     """
-    for i in range(custom_len(some_list)):
-        if some_list[:] == another_list[:]:
-            return True
-    return False
+    #for i in range(custom_len(some_list)):
+        #if some_list == another_list:
+            #return True
+    #return False
+    if custom_len(some_list) != custom_len(another_list):
+        return False
+    x = 0
+    for i in range (custom_len(some_list)):
+        if some_list[x] != another_list[x]:
+            return False
+        x += 1
+    return True
                 
 
